@@ -1,0 +1,181 @@
+1.
+
+CREATE TABLE shopping (id INTEGER PRIMARY KEY, name TEXT, amount# INTEGER);
+"""This would create a new table called 'shopping' with the columns: ID(an int and cant be changed or repeated as primary key, name as text (str) and an amount (int)"""
+
+DROP TABLE shopping;
+"""This will delete the shopping table"""
+
+ALTER table shopping RENAME to shopp;
+"""This will change the table's name from 'shopping' to 'shopp"""
+
+ALTER table shopp RENAME to shopping;
+"""This will rename the table's nambe back from 'shopp' to 'shopping"""
+
+INSERT INTO shopping VALUES (1, 'Avokado', 5);
+INSERT INTO shopping VALUES (2, 'Milk', 2);
+INSERT INTO shopping VALUES (3, 'Bread', 3);
+INSERT INTO shopping VALUES (4, 'Chocolate', 8);
+INSERT INTO shopping VALUES (5, 'Bamba', 5);
+INSERT INTO shopping VALUES (6, 'Orange', 10);
+"""These will insert new values into the 'shopping' list: ID will be a primary key from 1 to 6, then the texts: 'Avokado', 'Milk','Bread','Chocolate','Bamba',Orange'.
+last column will be for amount as integers."""
+
+select * from shopping;
+"""This will present the full shopping table"""
+
+SELECT id, name FROM shopping
+"""This will present only the id and name columns from the table, with all their content"""
+
+SELECT * FROM shopping WHERE amount > 5
+""" This will show all items with amount bigger than 5, with full content"""
+
+SELECT * FROM shopping WHERE amount = 2
+""" This will show all items with amount equals to 2, with full content"""
+
+SELECT * FROM shopping WHERE name LIKE 'Bamba'
+"""This will show only the items named 'Bamba' from the table, with full content"""
+
+DELETE from shopping WHERE name like 'Orange';
+"""This will delete all records that have the name 'Orange' in the table"""
+
+UPDATE shopping SET name = 'Bisli' WHERE name LIKE 'Bamba'
+"""This will change the names of records named 'Bamba' into 'Bisli"""
+
+UPDATE shopping SET amount=1 WHERE name LIKE 'Milk'
+"""This will change the amout to 1 for all the items named 'Milk'"""
+
+ALTER TABLE shopping ADD COLUMN maavar
+"""This will add a new column - titled 'maavar' to the table"""
+
+UPDATE shopping SET maavar=6 WHERE id=1;
+"""This will insert the value 6 in the maavar column for the item with id 1"""
+
+UPDATE shopping SET maavar=3 WHERE id=2;
+"""This will insert the value 3 in the maavar column for the item with id 2"""
+
+UPDATE shopping SET maavar=12 WHERE id=3;
+"""This will insert the value 12 in the maavar column for the item with id 3"""
+
+UPDATE shopping SET maavar=8 WHERE id=4;
+"""This will insert the value 8 in the maavar column for the item with id 4"""
+
+UPDATE shopping SET maavar=5 WHERE id=5;
+"""This will insert the value 5 in the maavar column for the item with id 5"""
+
+SELECT * FROM shopping WHERE amount > 1 AND maavar > 5
+"""This will display all the records that are both with amount bigger than 1 and maavar bigger than 5 (items 1,3,4)"""
+
+SELECT * FROM shopping WHERE maavar BETWEEN 3 AND 5
+"""This will display all records that have the 'maavar' value between 3 and 5 (2,5)"""
+
+SELECT * FROM shopping ORDER BY maavar
+"""This will rearrange the table according to the 'maavar' column in a ascending order( items 2,5,1,4,3,6)"""
+
+SELECT * FROM shopping ORDER BY maavar DESC
+"""This will rearrange the table according to the 'maavar' column in a descending order( items 3,4,1,5,2,6)"""
+
+CREATE TABLE books (id INTEGER PRIMARY KEY, name TEXT);
+"""This will create a new table, titled 'Books', with a primary key column as int - id, and a 'name' column that will be a text (str) """
+
+INSERT INTO books VALUES (1, 'SQL PROGRAMMING');
+"""This will add the item named 'SQL PROGRAMMING' into the 'books' table, with an id no. of 1"""
+
+INSERT INTO books VALUES (2, 'CSHARP PROGRAMMING');
+"""This will add the item named 'CSHARP PROGRAMMING') into the 'books' table, with an id no. of 2"""
+
+DELETE FROM books;
+"""This will delete all data from the 'books' table, leaving just the titled columns"""
+
+SELECT COUNT(*)from shopping
+"""This will display of the 'amount' of items in the 'shopping' list after counting them (6)"""
+
+SELECT MAX(amount) from shopping
+"""This will display the highest number in the 'amount' column from 'shopping' (10), without displaying other data for this item"""
+
+SELECT AVG(amount) from shopping
+"""This will display the average number calculated from the 'amount' column from 'shopping' (5.5), without displaying other data for this item"""
+
+SELECT MIN(amount) from shopping
+"""This will display the lowest number in the 'amount' column from 'shopping' (3), without displaying other data for this item"""
+
+INSERT INTO shopping VALUES (6, 'Onions', 3, 6);
+"""This will add item no. 6 to the 'shopping' table, named 'Onions', with 3 for 'amout' and 6 for 'maavar'"""
+
+INSERT INTO shopping VALUES (7, 'Orio', 1, 8);
+"""This will add item no. 7 to the 'shopping' table, named 'Orio', with 1 for 'amout' and 8 for 'maavar'"""
+
+Select maavar, COUNT(*)FROM shopping GROUP BY maavar
+"""This will organize the items that have the same number in the 'maavar' column to groups, than count the groups. since all the numbers in the 'maavar' column are different except for '8', they are all marked 1.'8' is marked as '2', as it appears twice. finally, the table will be shown - 'maavar' and 'count', and the items will be arranged by the values in the 'maavar' column in an ascending order."""
+
+SELECT id AS "SECRET", name, amount, maavar FROM shopping
+"""This will display the 'shopping' table, and will switch the 'id' title to 'secret'. it doesnt change the table, and the column's name is still 'id' but will just show here as 'secret'. that is because of the AS command. Other columns will stay the same"""
+
+Select maavar, COUNT(*)FROM shopping GROUP BY maavar HAVING COUNT(*)>1
+"""This will organize the items that have the same number in the 'maavar' column to groups and display only the items that were counted more than once (maavar = 8, count = 2)"""
+
+CREATE TABLE prices (id INTEGER PRIMARY KEY, price INTEGER);
+"""This will create a new table titled 'prices', with an id no (which will be a primary key of an int type, and a price column, also integer"""
+
+INSERT INTO prices VALUES (1, 3);
+"""This will add the values 1 as id no. and 3 as the price to the 'prices' table"""
+
+INSERT INTO prices VALUES (2, 7);
+"""This will add the values 2 as id no. and 7 as the price to the 'prices' table"""
+
+INSERT INTO prices VALUES (3, 12);
+"""This will add the values 3 as id no. and 12 as the price to the 'prices' table"""
+
+INSERT INTO prices VALUES (4, 5);
+"""This will add the values 4 as id no. and 5 as the price to the 'prices' table"""
+
+INSERT INTO prices VALUES (5, 3);
+"""This will add the values 5 as id no. and 3 as the price to the 'prices' table"""
+
+INSERT INTO prices VALUES (6, 2);
+"""This will add the values 6 as id no. and 2 as the price to the 'prices' table"""
+
+INSERT INTO prices VALUES (7, 10);
+"""This will add the values 7 as id no. and 10 as the price to the 'prices' table"""
+
+SELECT s.id, s.name, s.amount, s.maavar, p.price FROM shopping s JOIN
+prices p ON s.id=p.id
+"""This will display the columns 'id', 'name', 'amount' and 'maavar' from the 'shopping' list (aliased as s) and join them with the data in the 'price' list (aliased as p). Then, all the data will be shown in one table"""
+
+
+SELECT s.id, s.name, s.amount, s.maavar, p.price, s.amount * p.price AS "SECRET"
+FROM shopping s
+JOIN prices p
+ON s.id=p.id
+"""This will display the columns 'id', 'name', 'amount' and 'maavar' from the 'shopping' list (aliased as s) and also the 'price' column from the 'price' table (aliased as p) and join them together to display 1 whole table."""
+"""The two tables will be joined based on the common 'id' column. The multiplication of the values in the 'amount' and 'price' columns will be shown under the new column 'SECRET'."""
+
+SELECT s.id, s.name, s.amount, s.maavar, p.price
+FROM shopping s
+JOIN prices p
+ON s.id=p.id
+WHERE p.price = (SELECT MAX(price) FROM prices)
+"""This will display the columns 'id', 'name', 'amount' and 'maavar' from the 'shopping' list (aliased as s) and also the 'price' column from the 'prices' table (aliased as p) and join them together to display 1 whole table."""
+"""The two tables will be joined based on the common 'id' column. Although these columns from both tables will be joined into 1 table, only the item with the highest price from 'prices' will be shown - 12 for bread"""
+
+2.
+
+a. CREATE TABLE students (id integer PRIMARY KEY,name TEXT, city TEXT, birth INTEGER);
+INSERT INTO students VALUES (1, 'SHALOM', 'TEL AVIV', 1974)
+INSERT INTO students VALUES (2, 'YURI', 'RAANANA', 1980)
+INSERT INTO students VALUES (3, 'ANAT', 'RISHON', 1994)
+INSERT INTO students VALUES (4, 'DANA', 'REHOVOT', 1990)
+INSERT INTO students VALUES (5, 'OMER', 'JERUSALEM', 1987)
+
+b. CREATE TABLE grade (id integer PRIMARY KEY, grade INTEGER);
+INSERT INTO grade VALUES (1, 95)
+INSERT INTO grade VALUES (2, 70)
+INSERT INTO grade VALUES (3, 85)
+INSERT INTO grade VALUES (4, 99)
+INSERT INTO grade VALUES (5 ,91)
+SELECT s.name, g.grade FROM students s JOIN grades g ON s.id=g.id
+
+c. SELECT s.name, g.grade, AVG(g.grade) AS 'AVERAGE' FROM students s JOIN grades g ON s.id=g.id
+
+
+
