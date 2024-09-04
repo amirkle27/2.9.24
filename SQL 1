@@ -167,6 +167,8 @@ INSERT INTO students VALUES (3, 'ANAT', 'RISHON', 1994)
 INSERT INTO students VALUES (4, 'DANA', 'REHOVOT', 1990)
 INSERT INTO students VALUES (5, 'OMER', 'JERUSALEM', 1987)
 
+)
+
 b. CREATE TABLE grade (id integer PRIMARY KEY, grade INTEGER);
 INSERT INTO grade VALUES (1, 95)
 INSERT INTO grade VALUES (2, 70)
@@ -176,6 +178,25 @@ INSERT INTO grade VALUES (5 ,91)
 SELECT s.name, g.grade FROM students s JOIN grades g ON s.id=g.id
 
 c. SELECT s.name, g.grade, AVG(g.grade) AS 'AVERAGE' FROM students s JOIN grades g ON s.id=g.id
+
+d. ALTER TABLE grade ADD COLUMN (excellent, TEXT)
+SELECT (id, grade)
+    CASE
+        WHEN grade > 90 THEN 'Yes'
+        ELSE 'No'
+    END
+ FROM grade
+
+e. SELECT s.name, g.grade
+FROM students s
+JOIN grades g ON s.id = g. id
+WHERE g.grade > (SELECT AVG(grade) FROM grades)
+
+f. SELECT s.student, g.grade
+FROM students s
+JOIN grades g ON s.id = g.id
+WHERE g.grade = (SELECT MAX (grade)FROM grades)
+
 
 
 
